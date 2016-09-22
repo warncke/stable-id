@@ -3,7 +3,7 @@
   "dependencies": {
     "json-stable-stringify": "^1.0.1"
   },
-  "description": "Generate UTC micro-second timestamp in MySQL datetime format",
+  "description": "Generate 128bit hex id for stable JSON strigified object or string",
   "devDependencies": {
     "chai": "^3.5.0",
     "mocha": "^3.0.2"
@@ -18,5 +18,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.1.1"
+  "version": "0.1.2"
 }
