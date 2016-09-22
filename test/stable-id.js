@@ -38,5 +38,14 @@ describe('stable-id', function () {
         assert.strictEqual(stableId(NaN), undefined)
         assert.strictEqual(stableId(Infinity), undefined)
     })
+
+    it('should throw exception on circular references', function () {
+        // create circular referenc
+        var foo = {}
+        var bar = {'foo': foo}
+        foo.bar = bar
+        // test for exception
+        assert.throws(() => stableId(foo), 'Converting circular structure to JSON')
+    })
     
 })
