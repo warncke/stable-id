@@ -40,12 +40,28 @@ describe('stable-id', function () {
     })
 
     it('should throw exception on circular references', function () {
-        // create circular referenc
+        // create circular reference
         var foo = {}
         var bar = {'foo': foo}
         foo.bar = bar
         // test for exception
         assert.throws(() => stableId(foo), 'Converting circular structure to JSON')
+    })
+
+    it('should return object with id and data when flag set', function () {
+        // get id with data
+        var id = stableId({foo: 'bar'}, true)
+        // test id and data
+        assert.equal(id.id, '7A38BF81F383F69433AD6E900D35B3E2')
+        assert.equal(id.data, '{"foo":"bar"}')
+    })
+
+    it('should return object with undefined id and data when flag set', function () {
+        // get id with data
+        var id = stableId(undefined, true)
+        // test id and data
+        assert.deepEqual(id.id, undefined)
+        assert.equal(id.data, undefined)
     })
     
 })
