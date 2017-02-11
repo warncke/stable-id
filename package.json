@@ -1,12 +1,12 @@
 {
   "author": "Ersun Warncke <ersun.warncke@gmail.com>",
   "dependencies": {
-    "json-stable-stringify": "^1.0.1"
+    "json-stable-stringify": "1.0.1"
   },
   "description": "Generate 128bit hex id for stable JSON strigified object or string",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "mocha": "^3.0.2"
+    "chai": "3.5.0",
+    "mocha": "3.2.0"
   },
   "directories": {
     "test": "test"
@@ -18,5 +18,5 @@
   "scripts": {
     "test": "mocha"
   },
-  "version": "0.2.0"
+  "version": "0.2.1"
 }
