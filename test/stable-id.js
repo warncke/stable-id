@@ -6,15 +6,15 @@ const stableId = require('../lib/stable-id')
 describe('stable-id', function () {
 
     it('should return id for object', function () {
-        assert.equal(stableId({foo: 'bar'}), '7A38BF81F383F69433AD6E900D35B3E2')
+        assert.equal(stableId({foo: 'bar'}), '7a38bf81f383f69433ad6e900d35b3e2')
     })
 
     it('should return id for string', function () {
-        assert.equal(stableId('foo'), '2C26B46B68FFC68FF99B453C1D304134')
+        assert.equal(stableId('foo'), '2c26b46b68ffc68ff99b453c1d304134')
     })
 
     it('should return id for number', function () {
-        assert.equal(stableId(0), '5FECEB66FFC86F38D952786C6D696C79')
+        assert.equal(stableId(0), '5feceb66ffc86f38d952786c6d696c79')
     })
 
     it('should return same id for number and number as string', function () {
@@ -23,8 +23,8 @@ describe('stable-id', function () {
     })
 
     it('should return id for boolean', function () {
-        assert.equal(stableId(false), 'FCBCF165908DD18A9E49F7FF27810176')
-        assert.equal(stableId(true), 'B5BEA41B6C623F7C09F1BF24DCAE58EB')
+        assert.equal(stableId(false), 'fcbcf165908dd18a9e49f7ff27810176')
+        assert.equal(stableId(true), 'b5bea41b6c623f7c09f1bf24dcae58eb')
     })
 
     it('should return same id for boolean and boolean as string', function () {
@@ -32,11 +32,15 @@ describe('stable-id', function () {
         assert.equal(stableId(true), stableId('true'))
     })
 
+    it('should use U+221E for Infinity', function () {
+        assert.equal(stableId('∞'), '78d9ce976067aaa5aa9024c17a726c9b')
+        assert.strictEqual(stableId(Infinity), stableId('∞'))
+    })
+
     it('should return undefined for everything else', function () {
         assert.strictEqual(stableId(undefined), undefined)
         assert.strictEqual(stableId(null), undefined)
         assert.strictEqual(stableId(NaN), undefined)
-        assert.strictEqual(stableId(Infinity), undefined)
     })
 
     it('should throw exception on circular references', function () {
@@ -52,7 +56,7 @@ describe('stable-id', function () {
         // get id with data
         var id = stableId({foo: 'bar'}, true)
         // test id and data
-        assert.equal(id.id, '7A38BF81F383F69433AD6E900D35B3E2')
+        assert.equal(id.id, '7a38bf81f383f69433ad6e900d35b3e2')
         assert.equal(id.data, '{"foo":"bar"}')
     })
 
